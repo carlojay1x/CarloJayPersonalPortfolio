@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio – Carlo Jay Dela Cruz</title>
+  <meta name="description" content="Portfolio of Carlo Jay Dela Cruz – BS Information Technology student at Our Lady of the Sacred Heart College of Guimba."/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--dk:#0d0d0d;--dk2:#141414;--pn:#1a1a1a;--cy:#00d4ff;--cy2:#00aacc;--gl:rgba(0,212,255,.16);--tx:#e8e8e8;--mu:#888;--bd:rgba(0,212,255,.15);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--dk);color:var(--tx);overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--dk2);}::-webkit-scrollbar-thumb{background:var(--cy2);border-radius:3px;}
+
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;z-index:99;padding:16px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(13,13,13,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);}
+    .logo{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:1px;}
+    .logo span{color:var(--cy);}
+    nav ul{list-style:none;display:flex;gap:28px;}
+    nav a{color:var(--mu);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;}
+    nav a:hover,nav a.on{color:var(--cy);}
+
+    /* HERO */
+    #home{display:flex;align-items:center;gap:0;padding:80px 60px;position:relative;overflow:hidden;}
+    #home::before{content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:800px;height:260px;background:radial-gradient(ellipse,rgba(0,212,255,.2) 0%,transparent 70%);pointer-events:none;}
+    .hc{flex:1;max-width:500px;animation:up .8s ease both;}
+    .hg{font-size:1rem;color:var(--mu);margin-bottom:5px;}
+    .hn{font-family:'Rajdhani',sans-serif;font-size:clamp(2.6rem,5vw,3.8rem);font-weight:700;color:#fff;line-height:1.05;margin-bottom:8px;}
+    .hr{font-size:1.15rem;font-weight:600;color:#ccc;margin-bottom:20px;}
+    .hr span{color:var(--cy);}
+    .hd{font-size:.92rem;color:var(--mu);line-height:1.7;margin-bottom:28px;max-width:400px;}
+    .ctas{display:flex;gap:12px;flex-wrap:wrap;}
+    .bo{padding:10px 28px;background:transparent;color:var(--cy);font-weight:700;font-size:.84rem;letter-spacing:.8px;text-transform:uppercase;border:1.5px solid var(--cy);border-radius:40px;text-decoration:none;transition:all .2s;display:inline-block;}
+    .bo:hover{background:var(--gl);transform:translateY(-2px);}
+
+    /* HEX */
+    .hp{flex:1;display:flex;justify-content:center;align-items:center;animation:up .8s .2s ease both;}
+    .hw{position:relative;width:280px;height:280px;}
+    .hgl{position:absolute;inset:-22px;clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:linear-gradient(135deg,var(--cy),transparent 60%);opacity:.32;animation:spin 8s linear infinite;}
+    .hbr{position:absolute;inset:-5px;clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:linear-gradient(160deg,var(--cy),var(--dk) 60%);}
+    .hph{position:absolute;inset:0;clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:var(--pn);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .hph img{width:100%;height:100%;object-fit:contain;object-position:center top;padding-top:8px;}
+    .dot{position:absolute;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:pulse 2s ease-in-out infinite;}
+    .dot:nth-child(1){width:9px;height:9px;top:8px;right:18px;}
+    .dot:nth-child(2){width:5px;height:5px;bottom:28px;left:8px;animation-delay:.6s;}
+    .dot:nth-child(3){width:7px;height:7px;bottom:8px;right:38px;animation-delay:1.2s;}
+
+    /* SECTIONS */
+    section:not(#home){padding:80px 60px;}
+    section:nth-of-type(even):not(#home){background:var(--dk2);}
+    .sh{margin-bottom:40px;}
+    .st{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cy);margin-bottom:6px;}
+    .stl{font-family:'Rajdhani',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;}
+    .stl span{color:var(--cy);}
+    .sl{width:55px;height:3px;background:linear-gradient(90deg,var(--cy),transparent);margin-top:8px;border-radius:2px;}
+    .card{background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:28px 32px;box-shadow:0 4px 32px rgba(0,0,0,.28);}
+
+    /* ABOUT */
+    #about p{color:#aaa;line-height:1.8;font-size:.94rem;}
+    #about p + p{margin-top:14px;}
+    .about-highlights{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
+    .about-tag{display:flex;align-items:center;gap:8px;background:var(--gl);border:1px solid var(--bd);border-radius:8px;padding:8px 14px;font-size:.82rem;color:#ccc;}
+    .about-tag span{font-size:1rem;}
+
+    /* DETAILS */
+    table.dt{width:100%;border-collapse:collapse;}
+    table.dt tr{border-bottom:1px solid rgba(255,255,255,.055);}
+    table.dt tr:last-child{border-bottom:none;}
+    table.dt td{padding:13px 10px;font-size:.91rem;}
+    table.dt td:first-child{width:35%;color:var(--cy);font-size:.73rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;}
+    table.dt td:last-child{color:#bbb;}
+
+    /* SKILLS */
+    .sg{display:flex;flex-direction:column;gap:0;}
+    .sk{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+    .sk:last-child{border-bottom:none;}
+    .sn{font-size:.95rem;color:#ddd;}
+    .slevel{font-size:.75rem;color:var(--mu);}
+
+    /* INSPIRATION */
+    #inspiration blockquote{border-left:3px solid var(--cy);padding:6px 0 6px 20px;margin-bottom:22px;font-family:'Rajdhani',sans-serif;font-size:1.3rem;color:#fff;font-style:italic;line-height:1.6;}
+    #inspiration blockquote cite{display:block;font-size:.8rem;font-style:normal;color:var(--cy);margin-top:6px;letter-spacing:.5px;}
+    #inspiration p{color:#aaa;line-height:1.8;font-size:.94rem;}
+    #inspiration p + p{margin-top:12px;}
+
+    /* FOOTER */
+    footer{background:#080808;border-top:1px solid var(--bd);text-align:center;padding:26px;font-size:.8rem;color:var(--mu);}
+    footer span{color:var(--cy);}
+
+    @keyframes up{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.65);}}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    @media(max-width:820px){
+      nav{padding:14px 22px;}nav ul{gap:16px;}
+      #home{flex-direction:column-reverse;padding:90px 22px 50px;text-align:center;gap:36px;}
+      .ctas{justify-content:center;}
+      section:not(#home){padding:60px 22px;}
+      .hw{width:210px;height:210px;}
+      .about-highlights{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Portfolio<span>.</span></div>
+  <ul>
+    <li><a href="#home" class="on">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#inspiration">Inspiration</a></li>
+  </ul>
+</nav>
+
+<!-- HOME / PROFILE -->
+<section id="home">
+  <div class="hc">
+    <p class="hg">Hello, It's Me</p>
+    <h1 class="hn">Carlo Jay Dela Cruz</h1>
+    <p class="hr">And I'm an <span>Aspiring IT Professional</span></p>
+    <p class="hd">A dedicated BS Information Technology student passionate about web development, programming, and building solutions that make a real difference.</p>
+    <div class="ctas">
+      <a href="#about" class="bo">About Me</a>
+    </div>
+  </div>
+  <div class="hp">
+    <div class="hw">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="hgl"></div>
+      <div class="hbr"></div>
+      <div class="hph">
+        <img src="carlo.png" alt="Carlo Jay Dela Cruz – 2x2 Picture">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh">
+    <p class="st">Who I Am</p>
+    <h2 class="stl">About <span>Me</span></h2>
+    <div class="sl"></div>
+  </div>
+  <div class="card">
+    <p>I am a first-year <strong style="color:#eee">BS Information Technology</strong> student at <strong style="color:#eee">Our Lady of the Sacred Heart College of Guimba</strong>. I like technology and I want to learn more about how it works.</p>
+    <p>I enjoy making simple websites and trying out basic programs. I work hard in my studies and I always do my best to learn new things every day.</p>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sh">
+    <p class="st">Technical Knowledge</p>
+    <h2 class="stl">My <span>Skills</span></h2>
+    <div class="sl"></div>
+  </div>
+  <div class="card">
+    <div class="sg">
+      <div class="sk"><span class="sn">HTML</span><span class="slevel">Beginner</span></div>
+      <div class="sk"><span class="sn">CSS</span><span class="slevel">Beginner</span></div>
+      <div class="sk"><span class="sn">Java</span><span class="slevel">Beginner</span></div>
+      <div class="sk"><span class="sn">Python</span><span class="slevel">Beginner</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details">
+  <div class="sh">
+    <p class="st">Get to Know Me</p>
+    <h2 class="stl">Personal <span>Details</span></h2>
+    <div class="sl"></div>
+  </div>
+  <div class="card">
+    <table class="dt">
+      <tr><td>Full Name</td><td>Carlo Jay C. Dela Cruz</td></tr>
+      <tr><td>Age</td><td>19 years old</td></tr>
+      <tr><td>Gmail</td><td>carlodelacruz0020@gmail.com</td></tr>
+      <tr><td>Course</td><td>BS Information Technology</td></tr>
+      <tr><td>School</td><td>Our Lady of the Sacred Heart College of Guimba</td></tr>
+      <tr><td>Address</td><td>Cawayan Bugtong, Guimba, Nueva Ecija</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- INSPIRATION -->
+<section id="inspiration">
+  <div class="sh">
+    <p class="st">My Driving Force</p>
+    <h2 class="stl">My <span>Inspiration</span></h2>
+    <div class="sl"></div>
+  </div>
+  <div class="card">
+    <blockquote>
+      "The only way to do great work is to love what you do."
+      <cite>— Steve Jobs</cite>
+    </blockquote>
+    <p>I chose IT because I want to understand how technology works and how it helps people in their everyday lives. I find it exciting to write code and see it actually do something useful.</p>
+    <p>My goal is simple, to become a good developer who can build things that help others. I know I still have a lot to learn, but I am willing to work hard to get there.</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 <span>Carlo Jay Dela Cruz</span> &nbsp;·&nbsp; BS Information Technology &nbsp;·&nbsp; All rights reserved.</p>
+</footer>
+
+<script>
+  const secs=document.querySelectorAll('section[id]'),lnks=document.querySelectorAll('nav a');
+  window.addEventListener('scroll',()=>{
+    let c='';
+    secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)c=s.id;});
+    lnks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+c));
+  });
+</script>
+</body>
+</html>
